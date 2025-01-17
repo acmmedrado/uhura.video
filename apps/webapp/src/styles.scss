@@ -1,0 +1,121 @@
+@import '~@angular/cdk/text-field/text-field';
+@import '~@angular/material/theming';
+@import 'app/mat.theme.scss';
+@import 'app/app.theme.scss';
+@import 'theming/palette';
+@import 'animtions';
+
+@include mat-core();
+@include cdk-a11y();
+
+$client-primary: mat-palette($mat-cyan);
+$client-accent: mat-palette($mat-light-blue);
+$client-warn: mat-palette($mat-red);
+
+$speek-typography: mat-typography-config(
+  $font-family: '"Montserrat", sans-serif',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500),
+);
+@include angular-material-typography($speek-typography);
+
+$client-theme: mat-light-theme(
+  (
+    color: (
+      primary: $client-primary,
+      accent: $client-accent,
+      warn: $client-warn,
+    ),
+  )
+);
+
+@include mat-theme($client-theme);
+@include app-theme($client-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+body .mat-drawer-backdrop.mat-drawer-shown {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+body .mat-drawer-content {
+  overflow: unset;
+}
+
+body .mat-fab {
+  color: black;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+.headers-align {
+  .mat-expansion-panel-header-title {
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mat-expansion-panel-header-title,
+  .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+}
+
+body .flex {
+  display: flex;
+
+  &.row {
+    flex-direction: row;
+  }
+  &.col {
+    flex-direction: column;
+  }
+  > .full {
+    flex: 1;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+  &.justify-center {
+    justify-content: space-between;
+  }
+  &-start {
+    justify-content: flex-start;
+  }
+  &-end {
+    justify-content: flex-end;
+  }
+
+  &.center-center {
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.audio-dialog .mat-dialog-container {
+  padding: 0;
+}
+.video-dialog .mat-dialog-container {
+  padding: 0;
+}
+.confirm-dialog .mat-dialog-actions {
+  justify-content: space-between;
+}
